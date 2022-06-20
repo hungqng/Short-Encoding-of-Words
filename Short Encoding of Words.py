@@ -14,3 +14,13 @@ class Solution:
             for i in range(1, len(w)):
                 s.discard(w[i:])
         return sum(len(w) + 1 for w in s)
+
+        # Solution 2
+        N = len(words)
+        W = set(words)
+        for w in words:
+            M = len(w)
+            for j in range(1, M):
+                if w[-j:] in W:
+                    W.remove(w[-j:])
+        return len("#".join([w for w in W]) + "#")
